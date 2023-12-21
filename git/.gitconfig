@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Orkun Özoğlu
+	email = 50372354+ozogxyz@users.noreply.github.com
+#	email = 50372354+ozogxyz@users.noreply.github.com
+[alias]
+	mine = log --oneline --author=ozogxyz
+	st = status
+[github]
+	user = ozoggxyz
