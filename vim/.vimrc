@@ -18,7 +18,7 @@ if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-" Disable auto commenting in a new line
+" Disable auto commenting in a new line (doesn't work yet)
 autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " This allows you to undo changes even after saving
@@ -64,7 +64,7 @@ set path+=**
 let mapleader = " "
 
 " Netrw (File Explorer) Settings
-map <leader>e :Lex<CR>
+map <leader>e :Ex<CR>
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_showhide=1
@@ -93,6 +93,9 @@ if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man'  && !ha
 endif
 
 "MAPPINGS----------------------------------------------------------------------
+" Go up/down half a page and center it
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 " Jump buffers
 map <leader>p :bp<CR>

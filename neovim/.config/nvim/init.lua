@@ -1,7 +1,8 @@
 -- OPTIONS --
 
 -- Regular vim themes are the best
---vim.cmd.colorscheme('default')
+vim.cmd.colorscheme('lunaperche')
+vim.cmd.hi('Normal guibg=NONE ctermbg=NONE')
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
@@ -18,11 +19,7 @@ vim.opt.expandtab = true
 -- Disable swap
 vim.opt.swapfile = false
 
--- Highlight the line number of the cursor
---vim.opt.cursorline = true
---vim.opt.cursorlineopt = "number"
-
----- Wildmenu for horizontal completion in commands
+-- Wildmenu for horizontal completion in commands
 vim.opt.wildmode = "full"
 vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
@@ -37,14 +34,14 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
----- Set completeopt to have a better completion experience
+-- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect,preview'
 
----- MAPPINGS --
+---- MAPPINGS ----------------------------------------------------------------------
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
----- Netrw 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- Netrw 
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- PLUGINS----------------------------------------------------------------------
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
