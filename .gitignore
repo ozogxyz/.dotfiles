@@ -1,0 +1,5 @@
+vim/.vim/spell/*.spl
+vim/.vim/bundle
+vim/.vim/.netrwhist
+neovim/.config/nvim/spell/
+neovim/.config/nvim/.netrwhist
