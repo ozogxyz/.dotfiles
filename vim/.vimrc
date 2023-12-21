@@ -101,5 +101,8 @@ map <leader>n :bn<CR>
 " Moving between tabs
 map <leader>t gt
 
+" FZF TMUX 
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
 "PLUGINS-----------------------------------------------------------------------
 set rtp+=/opt/local/share/fzf/vim

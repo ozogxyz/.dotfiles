@@ -43,6 +43,7 @@ alias trail='<<<${(F)path}'
 ###################### FZF ################################
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/fzf/shell/completion.zsh
+bindkey -s ^f "tmux-sessionizer\n"
 
 #################### PROMPT ################################
 #precmd_vcs_info() { vcs_info }
@@ -72,11 +73,18 @@ source /opt/local/share/fzf/shell/completion.zsh
 #zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
 ################ PATH #######################
-typeset -U path
-path=(
-    "/opt/local/bin"
-    "/opt/local/sbin"
-    $path
-    "~/.local/bin"
-)
+export PATH=/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin:~/.local/scripts:$PATH
+
+# Below does not work for tmux-sessionizer script for some reason
+#typeset -U path
+#path=(
+#    "/opt/local/bin"
+#    "/opt/local/sbin"
+#    "/opt/homebrew/bin"
+#    "/opt/homebrew/sbin"
+#    "~/.local/bin"
+#    "~/.local/scripts"
+#    $path
+#)
+
 
