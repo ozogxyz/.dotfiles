@@ -1,16 +1,20 @@
-"BASICS-----------------------------------------------------------------------
-if &compatible
-  set nocompatible
-endif
-
+" BASICS-----------------------------------------------------------------------
+set nocompatible
 set expandtab
 set ruler
-set nobackup
 set incsearch
 set autoread
 set scrolloff=1
 set ignorecase
 set smartcase
+set ttyfast
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set wildmenu
+set showcmd
 
 " Use CTRL-L to clear the highlighting of 'hlsearch'
 set hlsearch
@@ -18,34 +22,31 @@ if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-" Disable auto commenting in a new line (doesn't work yet)
-autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" This allows you to undo changes even after saving
-if version >= 703
-  set undodir=~/.vim/backup
-  set undofile
-  set undoreload=1000
-endif
-
-set history=1000
-
 syntax on
 filetype plugin indent on
 
-set wildmenu
+" ?
+inoremap <C-U> <C-G>u<C-U> 
+
+" PLAYABLE----------------------------------------------------------------------
+
+" Backup stuff
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+
+" This allows you to undo changes even after saving
+if exists("&undodir")
+  set undodir=~/.vim/undo
+  set undoreload=1000
+  set undofile
+endif
+
 set wildignore=*.jpg,*.png,*.pdf,*.pyc
 
-inoremap <C-U> <C-G>u<C-U>
+" History
+set history=1000
 
-"CONFUSING STUFF---------------------------------------------------------------
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set autoindent
-set smartindent
-
-"PLAYABLE----------------------------------------------------------------------
+" Colors
 colorscheme lunaperche
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -53,15 +54,33 @@ hi Normal guibg=NONE ctermbg=NONE
 set backspace=indent,eol,start
 
 set wildoptions="list:full"
-set showcmd
 set showmatch
 set matchtime=1
 
 " Search down to subfolders
 set path+=**
 
+" MAPPINGS----------------------------------------------------------------------
+
 " Set the leader key.
 let mapleader = " "
+
+" Go up/down half a page and center it
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Jump buffers
+map <leader>p :bp<CR>
+map <leader>n :bn<CR>
+
+" Moving between tabs
+map <leader>t gt
+
+" FZF TMUX 
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
+" PLUGINS-----------------------------------------------------------------------
+set rtp+=/opt/local/share/fzf/vim
 
 " Netrw (File Explorer) Settings
 map <leader>e :Ex<CR>
@@ -92,20 +111,3 @@ if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man'  && !ha
   runtime ftplugin/man.vim
 endif
 
-"MAPPINGS----------------------------------------------------------------------
-" Go up/down half a page and center it
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-
-" Jump buffers
-map <leader>p :bp<CR>
-map <leader>n :bn<CR>
-
-" Moving between tabs
-map <leader>t gt
-
-" FZF TMUX 
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
-
-"PLUGINS-----------------------------------------------------------------------
-set rtp+=/opt/local/share/fzf/vim
