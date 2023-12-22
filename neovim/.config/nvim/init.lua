@@ -9,9 +9,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Tab settings
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 
 -- Use number of spaces to inset a <Tab>
 vim.opt.expandtab = true
