@@ -1,5 +1,7 @@
 vim/.vim/spell/*.spl
 vim/.vim/bundle
+vim/.vim/backups
+vim/.vim/swaps
 vim/.vim/.netrwhist
 neovim/.config/nvim/spell/
 neovim/.config/nvim/.netrwhist
