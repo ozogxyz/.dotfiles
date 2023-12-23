@@ -63,7 +63,7 @@ set path+=**
 " MAPPINGS----------------------------------------------------------------------
 
 " Set the leader key.
-let mapleader = " "
+let mapleader = ","
 
 " Go up/down half a page and center it
 nnoremap <C-d> <C-d>zz
@@ -76,18 +76,20 @@ map <leader>n :bn<CR>
 " Moving between tabs
 map <leader>t gt
 
-" FZF TMUX 
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
-
 " PLUGINS-----------------------------------------------------------------------
+
+" FZF
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 set rtp+=/opt/local/share/fzf/vim
+map <leader>ff :call fzf#run(fzf#wrap({'source': 'ls'}))<CR>
 
 " Netrw (File Explorer) Settings
 map <leader>e :Ex<CR>
+map <leader>e :Rex<CR>
 let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_showhide=1
-let g:netrw_winsize=20
+let g:netrw_liststyle=1
+"let g:netrw_showhide=1
+let g:netrw_winsize=30
 let g:netrw_list_hide=netrw_gitignore#Hide()
 
 " From `:help :DiffOrig`.
