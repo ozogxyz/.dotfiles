@@ -45,6 +45,7 @@ alias trail='<<<${(F)path}'
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/fzf/shell/completion.zsh
 bindkey -s ^f "tmux-sessionizer\n"
+export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
 
 #################### PROMPT ################################
 #precmd_vcs_info() { vcs_info }
