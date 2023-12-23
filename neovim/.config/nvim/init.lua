@@ -5,8 +5,8 @@ vim.cmd.colorscheme('lunaperche')
 vim.cmd.hi('Normal guibg=NONE ctermbg=NONE')
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- Tab settings
 vim.opt.shiftwidth = 4
@@ -25,7 +25,8 @@ vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
 
 -- Cursor styling
-vim.opt.guicursor = "n-v-c-i:block-Cursor/lCursor,i-ci-ve:blinkwait200-blinkoff400-blinkon250-Cursor/lCursor"
+--vim.opt.guicursor = "n-v-c-i:block-Cursor/lCursor,i-ci-ve:blinkwait200-blinkoff400-blinkon250-Cursor/lCursor"
+vim.opt.guicursor = ""
 
 -- Save undo history
 vim.o.undofile = true
@@ -38,10 +39,11 @@ vim.o.smartcase = true
 vim.o.completeopt = 'menuone,noselect,preview'
 
 ---- MAPPINGS ----------------------------------------------------------------------
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+--vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Netrw 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Rex)
 
 -- PLUGINS----------------------------------------------------------------------
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -73,7 +75,6 @@ require('lazy').setup({
       end,
    },
 })
-
 
 -- LSP Configurations
 require'lspconfig'.pyright.setup{}
