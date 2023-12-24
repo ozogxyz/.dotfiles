@@ -1,6 +1,9 @@
 ######################### ZSH OPTIONS ############################
 export ZDOTDIR="$HOME"
 
+# Prompt
+PS1="%1d$ "
+
 # History 
 export HISTFILE="$ZDOTDIR/.tmp/.zsh_history"
 export HISTORY_IGNORE="(ll*|ls*|bat*|cat*|exit|aws*|*SECRET*|h|exit)"
