@@ -28,6 +28,9 @@ filetype plugin indent on
 " ?
 inoremap <C-U> <C-G>u<C-U> 
 
+" Set the leader key.
+let mapleader = ","
+
 " PLAYABLE----------------------------------------------------------------------
 
 " Backup stuff
@@ -48,7 +51,7 @@ set history=1000
 
 " Colors
 colorscheme lunaperche
-hi Normal guibg=NONE ctermbg=NONE
+nnoremap <leader>bg :hi Normal guibg=NONE ctermbg=NONE<CR>
 
 " Backspace behavior, look it up
 set backspace=indent,eol,start
@@ -62,8 +65,6 @@ set path+=**
 
 " MAPPINGS----------------------------------------------------------------------
 
-" Set the leader key.
-let mapleader = ","
 
 " Go up/down half a page and center it
 nnoremap <C-d> <C-d>zz
