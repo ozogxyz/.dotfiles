@@ -78,7 +78,7 @@ export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
 #zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
 ################ PATH #######################
-export PATH=/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin:~/.local/scripts:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:/Users/motorbreath/Library/Python/3.11/bin:~/.local/scripts:$PATH
 
 # Below does not work for tmux-sessionizer script for some reason
 #typeset -U path
