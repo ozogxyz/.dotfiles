@@ -1,9 +1,5 @@
 -- OPTIONS --
 
--- Regular vim themes are the best
-vim.cmd.colorscheme('lunaperche')
-vim.cmd.hi('Normal guibg=NONE ctermbg=NONE')
-
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -25,6 +21,7 @@ vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
 
 -- Cursor styling
+-- uncomment this if you want cursor to blink in insert mode
 --vim.opt.guicursor = "n-v-c-i:block-Cursor/lCursor,i-ci-ve:blinkwait200-blinkoff400-blinkon250-Cursor/lCursor"
 vim.opt.guicursor = ""
 
@@ -39,11 +36,24 @@ vim.o.smartcase = true
 vim.o.completeopt = 'menuone,noselect,preview'
 
 ---- MAPPINGS ----------------------------------------------------------------------
---vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Netrw 
+-- Disable background color of the theme to use iterm2 colors 
+-- This if for Mac, if you uncomment this in Ubuntu's default terminal your background 
+-- color will be that hideous purple in all vim themes unless you install Alacritty (recommended)
+-- or change that disgusting purple color from default terminal settings
+vim.keymap.set("n", "<leader>bg", vim.cmd.hi('Normal guibg=NONE ctermbg=NONE'))
+
+-- Toggle Netrw (file explorer), you should rarely need these with the fuzzy finder
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>e", vim.cmd.Rex)
+
+-- Go up/down half a page and center it
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Jump prev and next buffers
+vim.keymap.set("n", "<leader>p", vim.cmd.bp)
+vim.keymap.set("n", "<leader>n", vim.cmd.bn)
 
 -- PLUGINS----------------------------------------------------------------------
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -60,14 +70,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { 'neovim/nvim-lspconfig' },
-  { 'github/copilot.vim' },
+  { 'neovim/nvim-lspconfig' }, -- for LSP configs
+--  { 'github/copilot.vim' }, 
+  { 'morhetz/gruvbox' },
   {
       "nvim-telescope/telescope.nvim",
       tag = "0.1.5",
       dependencies = { "nvim-lua/plenary.nvim" },
       init = function()
          local builtin = require("telescope.builtin")
+         -- important, internalize these for productivity
          vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
          vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
          vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
@@ -76,7 +88,9 @@ require('lazy').setup({
    },
 })
 
+-- Load the colorscheme, (can be default ones or the ones that you install above like gruv)
+vim.cmd.colorscheme('gruvbox')
+
 -- LSP Configurations
 require'lspconfig'.pyright.setup{}
-require'lspconfig'.ocamllsp.setup{}
-require'lspconfig'.gopls.setup{}
+--require'lspconfig'.ocamllsp.setup{}
