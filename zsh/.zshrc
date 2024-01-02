@@ -35,12 +35,10 @@ autoload -Uz compinit && compinit
 ####################### ALIASES ##############################
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
-#alias ll='ls -AFhLlno'
 alias ll='ls -lA'
 alias myip="curl http://ipecho.net/plain; echo"
 alias ss='source $ZDOTDIR/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
-#alias t='tree -LF 2 --dirsfirst --gitignore -I logs'
 alias t='tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;'
 alias trail='<<<${(F)path}'
 
