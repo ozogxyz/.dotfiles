@@ -17,6 +17,16 @@ alias r="fc -s"
 alias kr="cd ~/repos/c/kr/"
 alias cfg="vim ~/.kshrc"
 alias ss=". ~/.kshrc"
+alias cls=clear
+alias logout=exit
+alias bye=exit
+alias p='ps -l'
+alias j=jobs
+alias o='fg %-'
+alias df='df -k'
+alias du='du -k'
+alias rsize='eval $(resize)'
+alias h='fc -l | more'
 
 # Prompt
 function _cd {
@@ -41,4 +51,4 @@ function _fzfhisto {
    eval "$RES" 
 } 
            
-bind -m ^R=_fzfhisto^J
+bind -m '^R'=_fzfhisto^J
