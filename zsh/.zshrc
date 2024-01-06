@@ -1,10 +1,13 @@
-######################### ZSH OPTIONS ############################
 export ZDOTDIR="$HOME"
+
+# Path
+export PATH=/opt/local/bin:/opt/local/sbin:/Users/motorbreath/Library/Python/3.11/bin:~/.local/scripts:$PATH
 
 # Prompt
 PS1="%1d$ "
+RPS1="%t-%D"
 
-# History 
+# Options
 export HISTFILE="$ZDOTDIR/.tmp/.zsh_history"
 export HISTORY_IGNORE="(ll*|ls*|bat*|cat*|exit|aws*|*SECRET*|h|exit)"
 export HISTSIZE=10000
@@ -22,17 +25,15 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
-
-# Others
 setopt AUTO_CD
 setopt NO_CASE_GLOB
 setopt ALWAYS_TO_END
 
-####################### AUTO COMPLETION #######################
+# Auto-completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
-####################### ALIASES ##############################
+# Aliases
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
 alias ll='ls -lA'
@@ -42,52 +43,8 @@ alias tt='tree -LF 2 --dirsfirst -I logs'
 alias t='tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;'
 alias trail='<<<${(F)path}'
 
-###################### FZF ################################
+# FZF 
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/fzf/shell/completion.zsh
 bindkey -s ^f "tmux-sessionizer\n"
 export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
-
-#################### PROMPT ################################
-#precmd_vcs_info() { vcs_info }
-#precmd_functions+=( precmd_vcs_info )
-#
-## Autoload zsh add-zsh-hook and vcs_info functions (-U autoload w/o substition, -z use zsh style)
-#autoload -Uz add-zsh-hook vcs_info
-#
-## Enable substitution in the prompt.
-#setopt prompt_subst
-#
-## Run vcs_info just before a prompt is displayed (precmd)
-#add-zsh-hook precmd vcs_info
-#
-## add ${vcs_info_msg_0} to the prompt e.g. here we add the Git information in red
-#PROMPT='%1~ %F{red}${vcs_info_msg_0_}%f %# '
-#
-## Enable checking for (un)staged changes, enabling use of %u and %c
-#zstyle ':vcs_info:*' check-for-changes true
-#
-### Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
-#zstyle ':vcs_info:*' unstagedstr ' *'
-#zstyle ':vcs_info:*' stagedstr ' +'
-#
-### Set the format of the Git information for vcs_info
-#zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
-#zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
-
-################ PATH #######################
-export PATH=/opt/local/bin:/opt/local/sbin:/Users/motorbreath/Library/Python/3.11/bin:~/.local/scripts:$PATH
-
-# Below does not work for tmux-sessionizer script for some reason
-#typeset -U path
-#path=(
-#    "/opt/local/bin"
-#    "/opt/local/sbin"
-#    "/opt/homebrew/bin"
-#    "/opt/homebrew/sbin"
-#    "~/.local/bin"
-#    "~/.local/scripts"
-#    $path
-#)
-
-
