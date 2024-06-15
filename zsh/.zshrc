@@ -1,13 +1,11 @@
 export ZDOTDIR="$HOME"
-
-# Path
-export PATH=/opt/local/bin:/opt/local/sbin:/Users/motorbreath/Library/Python/3.11/bin:~/.local/scripts:$PATH
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # Prompt
-PS1="%1d$ "
-RPS1="%t-%D"
+PS1="%1d $ "
+RPS1="%t-%D "
 
-# Options
 export HISTFILE="$ZDOTDIR/.tmp/.zsh_history"
 export HISTORY_IGNORE="(ll*|ls*|bat*|cat*|exit|aws*|*SECRET*|h|exit)"
 export HISTSIZE=10000
@@ -29,11 +27,15 @@ setopt AUTO_CD
 setopt NO_CASE_GLOB
 setopt ALWAYS_TO_END
 
+# Google Cloud
+export CLOUDSDK_PYTHON=/opt/local/bin/python3
+
 # Auto-completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
 # Aliases
+alias vim=nvim
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
 alias ll='ls -lA'
@@ -42,9 +44,10 @@ alias ss='source $ZDOTDIR/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
 alias t='tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;'
 alias trail='<<<${(F)path}'
+alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-access-token --impersonate-service-account=${SERVICE_ACCOUNT_EMAIL})" -H "Content-Type: application/json"'
 
-# FZF 
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
-bindkey -s ^f "tmux-sessionizer\n"
-export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
