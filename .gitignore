@@ -5,6 +5,7 @@ vim/.vim/backups
 vim/.vim/swaps
 vim/.vim/.netrwhist
 vim/.vim/.netrwbook
-neovim/.config/nvim/spell/
-neovim/.config/nvim/.netrwhist
-neovim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/spell/
+nvim/.config/nvim/.netrwhist
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/pack/
