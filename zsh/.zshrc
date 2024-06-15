@@ -6,6 +6,11 @@ export LC_CTYPE=en_US.UTF-8
 PS1="%1d $ "
 RPS1="%t-%D "
 
+# FZF
+source /opt/local/share/fzf/shell/key-bindings.zsh
+source /opt/local/share/fzf/shell/completion.zsh
+
+# Options
 export HISTFILE="$ZDOTDIR/.tmp/.zsh_history"
 export HISTORY_IGNORE="(ll*|ls*|bat*|cat*|exit|aws*|*SECRET*|h|exit)"
 export HISTSIZE=10000
