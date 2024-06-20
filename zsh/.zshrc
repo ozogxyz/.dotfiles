@@ -1,3 +1,7 @@
+# Path
+export PATH=$PATH:~/.local/scripts/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-22-macports.jdk/Contents/Home
+
 export ZDOTDIR="$HOME"
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -9,6 +13,8 @@ RPS1="%t-%D "
 # FZF
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/fzf/shell/completion.zsh
+bindkey -s ^f "tmux-sessionizer\n"
+export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
 
 # Options
 export HISTFILE="$ZDOTDIR/.tmp/.zsh_history"
@@ -41,9 +47,11 @@ autoload -Uz compinit && compinit
 
 # Aliases
 alias vim=nvim
+alias vcfg='nvim ~/.dotfiles/nvim/.config/nvim/init.lua'
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
-alias ll='ls -lA'
+alias ls='ls -G'
+alias ll='ls -lGA'
 alias myip="curl http://ipecho.net/plain; echo"
 alias ss='source $ZDOTDIR/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
@@ -52,7 +60,7 @@ alias trail='<<<${(F)path}'
 alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-access-token --impersonate-service-account=${SERVICE_ACCOUNT_EMAIL})" -H "Content-Type: application/json"'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/motorbreath/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/motorbreath/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc'; fi
