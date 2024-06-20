@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Prompt project name and root directory
+echo "Enter the project name: "
+read project_name
+echo "Enter the root directory: "
+read root_dir
+
+# Change to the root directory
+echo "Creating project ${project_name} structure in $root_dir"
+cd $root_dir
+
+# Create project directory
+echo "Creating project directory $project_name"
+mkdir $project_name
+echo "Project directory created successfully!"
+echo "Changing to project directory"
+cd $project_name
+
+# Create sub directories
+mkdir -pv "data/interim"
+mkdir -pv "data/processed"
+mkdir -pv "data/raw"
+
+mkdir -pv "models"
+
+mkdir -pv "notebooks"
+
+mkdir -pv "src/data"
+mkdir -pv "src/features"
+mkdir -pv "src/model"
+
+echo "Project structure created successfully!"
