@@ -5,3 +5,5 @@ if [ -f $HOME/.kshrc -a -r $HOME/.kshrc ]; then
 	ENV=$HOME/.kshrc
 	export ENV
 fi
+
+. "$HOME/.cargo/env"
