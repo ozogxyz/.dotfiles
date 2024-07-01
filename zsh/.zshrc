@@ -8,7 +8,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # Prompt
 PS1="%1d $ "
-RPS1="%t-%D "
+#RPS1="%t-%D "
 
 # FZF
 source /opt/local/share/fzf/shell/key-bindings.zsh
@@ -63,3 +63,5 @@ if [ -f '/Users/motorbreath/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mot
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/go/bin
