@@ -1,26 +1,26 @@
+function ColorMyPencils(color)
+  color = color or "tokyonight"
+  vim.cmd.colorscheme(color)
+
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
 return {
-	{
-		"folke/tokyonight.nvim",
-		priority = 1000,
-		init = function()
-			require("tokyonight").setup({
-				style = "storm",
-				light_style = "day",
-				transparent = false,
-				styles = {
-					comments = { italic = false },
-					keywords = { italic = false },
-					functions = {},
-					variables = {},
-					sidebars = "dark",
-					floats = "dark",
-				},
-				sidebars = { "qf", "help" },
-				day_brightness = 0.3,
-				hide_inactive_statusline = false,
-				dim_inactive = false,
-				lualine_bold = false,
-			})
-		end,
-	},
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("tokyonight").setup {
+        style = "night",
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+        },
+      }
+      vim.cmd "colorscheme tokyonight-night"
+      ColorMyPencils "tokyonight-night"
+    end,
+  },
 }

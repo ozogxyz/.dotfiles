@@ -24,9 +24,9 @@ return {
 			vim.cmd.colorscheme("rose-pine")
 
 			-- Get rid of the background color
-			vim.cmd.hi("Normal guibg=NONE ctermbg=NONE")
-			vim.cmd.hi("Status guibg=NONE ctermbg=NONE")
-			vim.cmd.hi("EndOFBuffer guibg=NONE ctermbg=NONE")
+			--vim.cmd.hi("Normal guibg=NONE ctermbg=NONE")
+			--vim.cmd.hi("Status guibg=NONE ctermbg=NONE")
+			--vim.cmd.hi("EndOFBuffer guibg=NONE ctermbg=NONE")
 		end,
 	},
 }
