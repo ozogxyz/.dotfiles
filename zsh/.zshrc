@@ -34,7 +34,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
-setopt AUTO_CD
 setopt NO_CASE_GLOB
 setopt ALWAYS_TO_END
 
@@ -51,6 +50,7 @@ alias vcfg='nvim ~/.dotfiles/nvim/.config/nvim/init.lua'
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
 alias ll='ls -lA'
+alias l='ls -l'
 alias myip="curl http://ipecho.net/plain; echo"
 alias ss='source $ZDOTDIR/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
