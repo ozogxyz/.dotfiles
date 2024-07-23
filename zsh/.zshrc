@@ -1,14 +1,28 @@
 # Path
-export PATH=$PATH:~/.local/scripts/
+export PATH=$PATH:~/.local/scripts/:$HOME/go/bin
+
+# Herd injected NVM configuration
+export NVM_DIR="/Users/motorbreath/Library/Application Support/Herd/config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -f "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh" ]] && builtin source "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh"
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/motorbreath/Library/Application Support/Herd/config/php/83/"
+
+# Herd injected PHP binary.
+export PATH="/Users/motorbreath/Library/Application Support/Herd/bin/":$PATH
+
+# Java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-22-macports.jdk/Contents/Home
 
+# Config
 export ZDOTDIR="$HOME"
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 # Prompt
 PS1="%1d $ "
-#RPS1="%t-%D "
 
 # FZF
 source /opt/local/share/fzf/shell/key-bindings.zsh
@@ -37,9 +51,6 @@ setopt SHARE_HISTORY
 setopt NO_CASE_GLOB
 setopt ALWAYS_TO_END
 
-# Google Cloud
-export CLOUDSDK_PYTHON=/opt/local/bin/python3
-
 # Auto-completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
@@ -56,12 +67,3 @@ alias ss='source $ZDOTDIR/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
 alias t='tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;'
 alias trail='<<<${(F)path}'
-alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-access-token --impersonate-service-account=${SERVICE_ACCOUNT_EMAIL})" -H "Content-Type: application/json"'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/motorbreath/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/motorbreath/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/motorbreath/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:$HOME/go/bin
