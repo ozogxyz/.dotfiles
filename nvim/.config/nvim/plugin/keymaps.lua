@@ -17,3 +17,6 @@ vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
+
+vim.keymap.set({ "n", "i" }, "<C-j>", "<cmd>bprev<CR>")
+vim.keymap.set({ "n", "i" }, "<C-k>", "<cmd>bnext<CR>")
