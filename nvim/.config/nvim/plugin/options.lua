@@ -1,7 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
--- opt.guicursor = "n-v-c-i:block-Cursor/lCursor-blinkon0"
+g.have_nerd_font = true
 opt.wildoptions = "fuzzy"
 g.netrw_banner = 0
 g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]]

@@ -4,6 +4,7 @@ return {
 
   -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
+  { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 
   -- Copilot
   { "github/copilot.vim" },
