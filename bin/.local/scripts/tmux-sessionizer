@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Herd ~/.dotfiles ~/.dotfiles/nvim/.config/nvim ~/personal/github.com/ozogxyz/ ~/personal ~/personal/courses ~/work ~/work/ucgen -mindepth 1 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/.dotfiles ~/.dotfiles/nvim/.config/nvim ~/personal/github.com/ozogxyz/ ~/personal ~/personal/courses ~/work ~/work/ucgen -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
