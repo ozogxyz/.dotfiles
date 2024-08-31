@@ -4,7 +4,7 @@ export PATH=$PATH:~/.local/scripts/:$HOME/go/bin:$HOME/personal/nand2tetris/tool
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='mg'
 else
   export EDITOR='mg'
 fi
@@ -35,7 +35,6 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
 # Aliases
-alias vim=nvim
 alias vcfg='nvim ~/.dotfiles/nvim/.config/nvim/init.lua'
 alias cfg='vim $ZDOTDIR/.zshrc'
 alias h='cat $HISTFILE'
