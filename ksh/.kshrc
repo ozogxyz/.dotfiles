@@ -42,13 +42,4 @@ function _cd {
 }
 alias cd=_cd
 _cd .
-
-PS1='$_pwd [!]\$ '
-
-function _fzfhisto { 
-   RES=$(fzf --tac --no-sort -e < $HISTFILE) 
-   test -n "$RES" || exit 0 
-   eval "$RES" 
-} 
            
-bind -m '^R'=_fzfhisto^J
