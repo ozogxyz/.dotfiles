@@ -1,43 +1,43 @@
-# User configuration
-# Locale
-export LC_ALL=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
+# Set up the prompt
+autoload -Uz promptinit
+promptinit
+prompt adam1
 
-# Path here?
-export PATH=$PATH:~/.local/scripts/:$HOME/go/bin:$HOME/personal/nand2tetris/tools:$HOME/.cargo/bin
+setopt histignorealldups sharehistory
 
-# Java stuff
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21-macports.jdk/Contents/Home
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
 
-# Preferred editor for local and remote sessions
-export ALTERNATE_EDITOR=mg
-if [[ -n $SSH_CONNECTION ]]; then
-	export VISUAL=ALTERNATE_EDITOR
-	export EDITOR=ALTERNATE_EDITOR
-else
-	export EDITOR="emacsclient -t"	# $EDITOR opens in terminal
-	export VISUAL="emacsclient -r"	# $VISUAL opens in GUI mode
-fi
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
 
-# FZF
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
-bindkey -s ^f "tmux-sessionizer\n"
-export FZF_DEFAULT_OPTS="--height=30%  --info=inline"
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
-# Options
-export HISTORY_IGNORE="(ll*|ls*|bat*|cat*|exit|aws*|*SECRET*|h|exit)"
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# My config
+
+# Path here
+export PATH=$PATH:~/.local/scripts:$HOME/.local/bin
 
 # Aliases
 alias ev='emacsclient -r'
@@ -51,4 +51,12 @@ alias ss='source $HOME/.zshrc'
 alias tt='tree -LF 2 --dirsfirst -I logs'
 alias t='tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;'
 alias trail='<<<${(F)path}'
+alias grep='grep --color=auto'
+
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+fi
+
 
