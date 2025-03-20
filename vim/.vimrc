@@ -1,92 +1,59 @@
-" sensible.vim - Defaults everyone can agree on
-" Maintainer:   Tim Pope <http://tpo.pe/>
-" Version:      1.1
+" Load the defaults.vim because it's only sourced when there's no ~/.vimrc
+source $VIMRUNTIME/defaults.vim
 
-if &compatible
-  finish
-else
-  let g:loaded_sensible = 1
-endif
+" Leader first
+let mapleader = " "
 
-if has('autocmd')
-  filetype plugin indent on
-endif
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
-
-" Use :help 'option' to see the documentation for the given option.
-
-set autoindent
-set backspace=indent,eol,start
-set complete-=i
-set smarttab
-
-set nrformats-=octal
-
-set ttimeout
-set ttimeoutlen=100
-
-set incsearch
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
-
-set laststatus=2
-set ruler
-set showcmd
-set wildmenu
-
-if !&scrolloff
-  set scrolloff=1
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
-set display+=lastline
-
-if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
-endif
-
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
-endif
-
-if has('path_extra')
-  setglobal tags-=./tags tags^=./tags;
-endif
-
-if &shell =~# 'fish$'
-  set shell=/bin/bash
-endif
-
+" Options
 set autoread
-set fileformats+=mac
+set expandtab
+set matchtime=0
+set path+=**
+set relativenumber
+set shiftwidth=4
+set showmatch
+set smartindent
+set tabstop=4
+set updatetime=300
 
-if &history < 1000
-  set history=1000
-endif
-if &tabpagemax < 50
-  set tabpagemax=50
-endif
-if !empty(&viminfo)
-  set viminfo^=!
-endif
-set sessionoptions-=options
-
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
-
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+" This allows you to undo changes even after saving
+if exists("&undodir")
+  set undodir=~/.vim/undo
+  set undoreload=1000
+  set undofile
 endif
 
+" General Keymaps
+map <leader>p :Rexplore <CR>
+
+" From `:help :DiffOrig`, to diff same file
+if exists(":DiffOrig") != 2
+ command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+           \ | diffthis | wincmd p | diffthis
+endif
+
+" Enable the :Man command shipped inside Vim's man filetype plugin.
+if exists(':Man') != 2 && !exists('g:loaded_man') && &filetype !=? 'man'  && !has('nvim')
+  runtime ftplugin/man.vim
+endif
+
+" Others 
+let g:netrw_banner=0
+let g:netrw_liststyle=1
+let g:netrw_list_hide=netrw_gitignore#Hide()
+
+" FZF
+set rtp+=/usr/bin/fzf
+map <leader><leader> :call fzf#run(fzf#wrap({'source': 'ls'}))<CR>
+
+" ALE
+let g:ale_fixers = { 'python': ['black'], 'rust': ['rustfmt'] }
+let g:ale_hover_to_preview=0
+
+nmap ]d :ALENext<CR>
+nmap [d :ALEPrevious<CR>
+nmap gd :ALEGoToDefinition<CR>
+nmap gq <Plug>(ale_fix)
+nmap gra :ALECodeAction<CR>
+nmap gr :ALEFindReferences<CR>
+nmap K :ALEHover<CR>
