@@ -44,16 +44,20 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 
 " FZF
 set rtp+=/usr/bin/fzf
-map <leader><leader> :call fzf#run(fzf#wrap({'source': 'ls'}))<CR>
+nmap <leader><leader> :Buffers<CR>
+nmap <leader>p :Files<CR>
+nmap <leader>f :GFiles<CR>
+nmap <leader>g :GFiles?<CR>
+nmap <leader>gr :RG<CR>
 
 " ALE
-let g:ale_fixers = { 'python': ['black'], 'rust': ['rustfmt'] }
+let g:ale_fixers = { 'python': ['black'], 'rust': ['rustfmt'], 'go': ['gofmt', 'gopls']}
 let g:ale_hover_to_preview=0
 
 nmap ]d :ALENext<CR>
 nmap [d :ALEPrevious<CR>
 nmap gd :ALEGoToDefinition<CR>
-nmap gq <Plug>(ale_fix)
 nmap gra :ALECodeAction<CR>
 nmap gr :ALEFindReferences<CR>
 nmap K :ALEHover<CR>
+nmap Q :ALEFix<CR>

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/motorbreath/.emacs.d'
+let g:netrw_dirhist_4='/home/motorbreath/code/repos/seeme/seeme/data'
+let g:netrw_dirhist_3='/home/motorbreath/code/repos/seeme/seeme'
+let g:netrw_dirhist_2='/home/motorbreath/code/repos/seeme'
+let g:netrw_dirhist_1='/home/motorbreath/code/perltf/lib'
+let g:netrw_dirhist_0='/home/motorbreath/code/perltf'
+let g:netrw_dirhist_9='/home/motorbreath/code/perltf/t'
+let g:netrw_dirhist_8='/home/motorbreath/code/perltf'
+let g:netrw_dirhist_7='/home/motorbreath/code/courses/3drenderer'
+let g:netrw_dirhist_6='/home/motorbreath/code/courses/3drenderer/src'
